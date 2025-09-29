@@ -1,107 +1,304 @@
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Флорбольный клуб "Акулы"</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
 
-<section class="news">
-<h2>Новости</h2>
-<article>
-<h3>Заголовок новости 1</h3>
-<p>Текст новости...</p>
-</article>
-<article>
-<h3>Заголовок новости 2</h3>
-<p>Текст новости...</p>
-</article>
-</section>
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
 
-<section class="calendar-preview">
-<h2>Календарь</h2>
-<p>Ближайшие матчи: [дата, соперник, место]</p>
-</section>
-</section>
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
-<!-- Календарь и результаты -->
-<section id="calendar" class="page" style="display: none;">
-<h2>Календарь и результаты</h2>
-<table>
-<thead>
-<tr>
-<th>Дата</th>
-<th>Соперник</th>
-<th>Результат</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10 сентября 2025</td>
-<td>Команда "Б"</td>
-<td>5:3</td>
-</tr>
-</tbody>
-</table>
-</section>
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
 
-<!-- Трансляции и видео -->
-<section id="broadcasts" class="page" style="display: none;">
-<h2>Трансляции и видео</h2>
-<div class="video-grid">
-<div class="video-main">
-<iframe
-src="https://vkvideo.ru/video_ext.php?oid=-56226718&id=456240917&hd=2&autoplay=1"
-height="480"
-allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-allowfullscreen>
-</iframe>
-</div>
-<div class="video-list">
-<div class="video-item">
-<iframe
-src="https://vkvideo.ru/video_ext.php?oid=-56226718&id=456240878&hd=2&autoplay=1"
-height="240"
-allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-allowfullscreen>
-</iframe>
-</div>
-</div>
-</div>
-</section>
+        nav a:hover {
+            text-decoration: underline;
+        }
 
-<!-- О клубе -->
-<section id="about" class="page" style="display: none;">
-<h2>О клубе</h2>
-<p>
-Команда «Акулы» была основана в июле 2009 году. Она была сформирована после корпоративного спортивного праздника ОАО «РОСБАНК», где флорбол был представлен энтузиастами Открытой Флорбольной Лиги. Уже через несколько недель начались первые игры и нехитрые тренировки. Первым капитаном был назначен Алексей Шуликов, единственный из игроков имевший незначительный опыт в данном виде спорта.
-</p>
-<p>
-В настоящее время Клуб участвует в Чемпионате России по флорболу Высшей лиги. «Акулы» активно участвуют в выездных играх и турнирах в Финляндии, Латвии, Эстонии, Республике Беларусь и являются флагманской командой Федерации флорбола Санкт-Петербурга.
-</p>
-<p><strong>Игровой слоган:</strong> «Вместе мы сильнее!»</p>
+        main {
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-<h3>Зал наград</h3>
-<div class="awards">
-<div class="award-item">
-<h4>Чемпионат Санкт-Петербурга 2018/2019</h4>
-<p>Золото</p>
-</div>
-<div class="award-item">
-<h4>Кубок России 2020</h4>
-<p>Обладатели</p>
-</div>
-</div>
-</section>
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
 
-<!-- Академия -->
-<section id="academy" class="page" style="display: none;">
-<h2>Академия</h2>
-<p>Информация о тренировках, тренерском штабе и расписании.</p>
-</section>
+        /* Баннер */
+        .banner {
+            background-color: #f0f0f0;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
 
-<!-- Магазин -->
-<section id="shop" class="page" style="display: none;">
-<h2>Магазин</h2>
-<p>Здесь будет каталог товаров.</p>
-</section>
+        /* Новости */
+        .news article {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
 
-<!-- Контакты -->
-<section id="contacts" class="page" style="display: none;">
-<h2>Контакты</h2>
+        /* Календарь */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        /* Видео */
+        .video-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-main {
+            width: 100%;
+        }
+
+        .video-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .video-item {
+            flex: 1 1 300px;
+            max-width: 320px;
+        }
+
+        iframe {
+            width: 100%;
+            border: none;
+            background-color: #000;
+        }
+
+        /* Зал наград */
+        .awards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .award-item {
+            flex: 1 1 200px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        /* Адаптивность */
+        @media (min-width: 768px) {
+            .video-grid {
+                flex-direction: row;
+            }
+
+            .video-main {
+                flex: 2;
+            }
+
+            .video-list {
+                flex: 1;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Флорбольный клуб "Акулы"</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#calendar">Календарь и результаты</a></li>
+                <li><a href="#broadcasts">Трансляции и видео</a></li>
+                <li><a href="#about">О клубе</a></li>
+                <li><a href="#academy">Академия</a></li>
+                <li><a href="#shop">Магазин</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Главная -->
+        <section id="home" class="page">
+            <div class="banner">
+                <h2>Следите за трансляциями наших матчей!</h2>
+                <p>Присоединяйтесь к нам на следующем матче!</p>
+            </div>
+
+            <section class="news">
+                <h2>Новости</h2>
+                <article>
+                    <h3>Заголовок новости 1</h3>
+                    <p>Текст новости...</p>
+                </article>
+                <article>
+                    <h3>Заголовок новости 2</h3>
+                    <p>Текст новости...</p>
+                </article>
+            </section>
+
+            <section class="calendar-preview">
+                <h2>Календарь</h2>
+                <p>Ближайшие матчи: [дата, соперник, место]</p>
+            </section>
+        </section>
+
+        <!-- Календарь и результаты -->
+        <section id="calendar" class="page" style="display: none;">
+            <h2>Календарь и результаты</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Соперник</th>
+                        <th>Результат</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 сентября 2025</td>
+                        <td>Команда "Б"</td>
+                        <td>5:3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Трансляции и видео -->
+        <section id="broadcasts" class="page" style="display: none;">
+            <h2>Трансляции и видео</h2>
+            <div class="video-grid">
+                <div class="video-main">
+                    <iframe
+                        src="https://vkvideo.ru/video_ext.php?oid=-56226718&id=456240917&hd=2&autoplay=1"
+                        height="480"
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="video-list">
+                    <div class="video-item">
+                        <iframe
+                            src="https://vkvideo.ru/video_ext.php?oid=-56226718&id=456240878&hd=2&autoplay=1"
+                            height="240"
+                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- О клубе -->
+        <section id="about" class="page" style="display: none;">
+            <h2>О клубе</h2>
+            <p>
+                Команда «Акулы» была основана в июле 2009 году. Она была сформирована после корпоративного спортивного праздника ОАО «РОСБАНК», где флорбол был представлен энтузиастами Открытой Флорбольной Лиги. Уже через несколько недель начались первые игры и нехитрые тренировки. Первым капитаном был назначен Алексей Шуликов, единственный из игроков имевший незначительный опыт в данном виде спорта.
+            </p>
+            <p>
+                В настоящее время Клуб участвует в Чемпионате России по флорболу Высшей лиги. «Акулы» активно участвуют в выездных играх и турнирах в Финляндии, Латвии, Эстонии, Республике Беларусь и являются флагманской командой Федерации флорбола Санкт-Петербурга.
+            </p>
+            <p><strong>Игровой слоган:</strong> «Вместе мы сильнее!»</p>
+
+            <h3>Зал наград</h3>
+            <div class="awards">
+                <div class="award-item">
+                    <h4>Чемпионат Санкт-Петербурга 2018/2019</h4>
+                    <p>Золото</p>
+                </div>
+                <div class="award-item">
+                    <h4>Кубок России 2020</h4>
+                    <p>Обладатели</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Академия -->
+        <section id="academy" class="page" style="display: none;">
+            <h2>Академия</h2>
+            <p>Информация о тренировках, тренерском штабе и расписании.</p>
+        </section>
+
+        <!-- Магазин -->
+        <section id="shop" class="page" style="display: none;">
+            <h2>Магазин</h2>
+            <p>Здесь будет каталог товаров.</p>
+        </section>
+
+        <!-- Контакты -->
+        <section id="contacts" class="page" style="display: none;">
+            <h2>Контакты</h2>
+            <p>Адрес: [Адрес клуба]</p>
+            <p>Телефон: [Телефон]</p>
+            <p>Email: [Email]</p>
+            <p>Социальные сети: [Ссылки]</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© Флорбольный клуб "Акулы", 2025</p>
+    </footer>
+
+    <script>
+        // Переключение страниц
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                document.querySelectorAll('.page').forEach(page => {
+                    page.style.display = 'none';
+                });
+                document.getElementById(targetId).style.display = 'block';
+            });
+        });
+
+        // Показать главную страницу по умолчанию
+        document.getElementById('home').style.display = 'block';
+    </script>
+</body>
 </html>
-
